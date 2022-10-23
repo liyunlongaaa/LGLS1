@@ -9,11 +9,11 @@ class train_loader(Dataset):
         self.noisetypes = ['noise','speech','music'] # Type of noise
         self.noisesnr = {'noise':[0,15],'speech':[13,20],'music':[5,15]} # The range of SNR
         self.noiselist = {} 
-        augment_files   = glob.glob(os.path.join(musan_path,'*/*/*/*.wav')) # All noise files in list
+        augment_files   = glob.glob(os.path.join(musan_path,'*/*/*.wav')) # All noise files in list
         for file in augment_files:
-            if not file.split('/')[-4] in self.noiselist:
-                self.noiselist[file.split('/')[-4]] = []
-            self.noiselist[file.split('/')[-4]].append(file) # All noise files in dic
+            if not file.split('/')[-3] in self.noiselist:
+                self.noiselist[file.split('/')[-3]] = []
+            self.noiselist[file.split('/')[-3]].append(file) # All noise files in dic
         self.rir_files = numpy.load('rir.npy') # Load the rir file
         for line in open(train_list).read().splitlines():
             filename = os.path.join(train_path, line.split()[1])

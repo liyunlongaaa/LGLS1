@@ -11,7 +11,7 @@ from tools import *
 class model(nn.Module):
     def __init__(self, lr, lr_decay, **kwargs):
         super(model, self).__init__()
-        self.Network = ECAPA_TDNN().cuda() # Speaker encoder
+        self.Network = vit_tiny().cuda() # Speaker encoder
         self.Loss = LossFunction().cuda() # Contrastive loss
         self.AATNet  = AATNet().cuda() # AAT, which is used to improve the performace
         self.Reverse = Reverse().cuda() # AAT
